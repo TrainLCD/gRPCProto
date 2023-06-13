@@ -7,6 +7,7 @@ service StationAPI {
     rpc GetStationByGroupId (GetStationByGroupIdRequest) returns (MultipleStationResponse) {}
     rpc GetStationByCoordinates (GetStationByCoordinatesRequest) returns (MultipleStationResponse) {}
     rpc GetStationsByLineId (GetStationByLineIdRequest) returns (MultipleStationResponse) {}
+    rpc GetStationsByName (GetStationByNameRequest) returns (MultipleStationResponse) {}
 }
 
 message GetStationByIdRequest {
@@ -25,6 +26,10 @@ message GetStationByCoordinatesRequest {
 
 message GetStationByLineIdRequest {
     uint32 line_id = 1;
+}
+
+message GetStationByNameRequest {
+    string station_name = 1;
 }
 
 enum OperationStatus {
