@@ -68,8 +68,8 @@ message StationResponse {
     // optional string secondary_station_number = 9;
     // optional string extra_station_number = 10;
     optional string three_letter_code = 11;
-    // repeated LineResponse lines = 12;
-    uint32 line_id = 13;
+    repeated LineResponse lines = 12;
+    LineResponse line = 13;
     uint32 prefecture_id = 14;
     string postal_code = 15;
     string address = 16;
@@ -85,12 +85,10 @@ message StationResponse {
 
 message SingleStationResponse {
     StationResponse station = 1;
-    repeated LineResponse lines = 2;
-    LineResponse line = 3;
 }
 
 message MultipleStationResponse {
-    repeated SingleStationResponse data = 1;
+    repeated SingleStationResponse stations = 1;
 }
 
 enum LineType {
