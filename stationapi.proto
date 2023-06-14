@@ -140,7 +140,7 @@ message LineResponse {
     string name_korean = 7;
     string color = 8;
     LineType line_type = 9;
-    CompanyResponse company = 10;
+    // CompanyResponse company = 10;
     repeated LineSymbol line_symbols = 11;
     OperationStatus status = 12;
     // StationResponse station = 13;
