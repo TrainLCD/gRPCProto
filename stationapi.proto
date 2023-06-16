@@ -21,7 +21,7 @@ message GetStationByGroupIdRequest {
 message GetStationByCoordinatesRequest {
     double latitude = 1;
     double longitude = 2;
-    optional int32 limit = 3;
+    optional uint32 limit = 3;
 }
 
 message GetStationByLineIdRequest {
@@ -30,6 +30,7 @@ message GetStationByLineIdRequest {
 
 message GetStationByNameRequest {
     string station_name = 1;
+    optional uint32 limit = 2;
 }
 
 enum OperationStatus {
