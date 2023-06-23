@@ -4,8 +4,8 @@ package app.trainlcd.grpc;
 
 service StationAPI {
     rpc GetStationById (GetStationByIdRequest) returns (SingleStationResponse) {}
-    rpc GetStationByGroupId (GetStationByGroupIdRequest) returns (MultipleStationResponse) {}
-    rpc GetStationByCoordinates (GetStationByCoordinatesRequest) returns (MultipleStationResponse) {}
+    rpc GetStationsByGroupId (GetStationByGroupIdRequest) returns (MultipleStationResponse) {}
+    rpc GetStationsByCoordinates (GetStationByCoordinatesRequest) returns (MultipleStationResponse) {}
     rpc GetStationsByLineId (GetStationByLineIdRequest) returns (MultipleStationResponse) {}
     rpc GetStationsByName (GetStationByNameRequest) returns (MultipleStationResponse) {}
 }
