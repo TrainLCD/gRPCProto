@@ -132,7 +132,7 @@ message LineResponse {
   repeated LineSymbol line_symbols = 11;
   OperationStatus status = 12;
   StationResponse station = 13;
-  CompanyResponse compnay = 14;
+  CompanyResponse company = 14;
 }
 
 message SingleLineResponse { LineResponse line = 1; }
