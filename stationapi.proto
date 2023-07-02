@@ -53,6 +53,28 @@ enum StopCondition {
   PartialStop = 5;
 }
 
+enum TrainDirection {
+  Both = 0;
+  Inbound = 1;
+  Outbound = 2;
+}
+
+message TrainType {
+  uint32 id = 1;
+  uint32 type_id = 2;
+  uint32 group_id = 3;
+  string name = 4;
+  string name_katakana = 5;
+  string name_roman = 6;
+  string name_chinese = 7;
+  string name_koren = 8;
+  string color = 9;
+  repeated Station stations = 10;
+  repeated Line lines = 11;
+  repeated TrainType another_train_types = 12;
+  TrainDirection direction = 13;
+}
+
 message Station {
   uint32 id = 1;
   uint32 group_id = 2;
