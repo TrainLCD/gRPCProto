@@ -3,14 +3,15 @@ syntax = "proto3";
 package app.trainlcd.grpc;
 
 service StationAPI {
-  rpc GetStationById(GetStationByIdRequest) returns (SingleStation) {}
+  rpc GetStationById(GetStationByIdRequest) returns (SingleStationResponse) {}
   rpc GetStationsByGroupId(GetStationByGroupIdRequest)
-      returns (MultipleStation) {}
+      returns (MultipleStationResponse) {}
   rpc GetStationsByCoordinates(GetStationByCoordinatesRequest)
-      returns (MultipleStation) {}
-  rpc GetStationsByLineId(GetStationByLineIdRequest) returns (MultipleStation) {
-  }
-  rpc GetStationsByName(GetStationByNameRequest) returns (MultipleStation) {}
+      returns (MultipleStationResponse) {}
+  rpc GetStationsByLineId(GetStationByLineIdRequest)
+      returns (MultipleStationResponse) {}
+  rpc GetStationsByName(GetStationByNameRequest)
+      returns (MultipleStationResponse) {}
 }
 
 message GetStationByIdRequest { uint32 id = 1; }
@@ -76,9 +77,9 @@ message Station {
   optional double distance = 21;
 }
 
-message SingleStation { Station station = 1; }
+message SingleStationResponse { Station station = 1; }
 
-message MultipleStation { repeated SingleStation stations = 1; }
+message MultipleStationResponse { repeated Station stations = 1; }
 
 enum LineType {
   OtherLineType = 0;
