@@ -3,15 +3,14 @@ syntax = "proto3";
 package app.trainlcd.grpc;
 
 service StationAPI {
-  rpc GetStationById(GetStationByIdRequest) returns (SingleStationResponse) {}
+  rpc GetStationById(GetStationByIdRequest) returns (SingleStation) {}
   rpc GetStationsByGroupId(GetStationByGroupIdRequest)
-      returns (MultipleStationResponse) {}
+      returns (MultipleStation) {}
   rpc GetStationsByCoordinates(GetStationByCoordinatesRequest)
-      returns (MultipleStationResponse) {}
-  rpc GetStationsByLineId(GetStationByLineIdRequest)
-      returns (MultipleStationResponse) {}
-  rpc GetStationsByName(GetStationByNameRequest)
-      returns (MultipleStationResponse) {}
+      returns (MultipleStation) {}
+  rpc GetStationsByLineId(GetStationByLineIdRequest) returns (MultipleStation) {
+  }
+  rpc GetStationsByName(GetStationByNameRequest) returns (MultipleStation) {}
 }
 
 message GetStationByIdRequest { uint32 id = 1; }
@@ -53,7 +52,7 @@ enum StopCondition {
   PartialStop = 5;
 }
 
-message StationResponse {
+message Station {
   uint32 id = 1;
   uint32 group_id = 2;
   string name = 3;
@@ -62,8 +61,8 @@ message StationResponse {
   string name_chinese = 6;
   string name_korean = 7;
   optional string three_letter_code = 8;
-  repeated LineResponse lines = 9;
-  LineResponse line = 10;
+  repeated Line lines = 9;
+  Line line = 10;
   uint32 prefecture_id = 11;
   string postal_code = 12;
   string address = 13;
@@ -77,9 +76,9 @@ message StationResponse {
   optional double distance = 21;
 }
 
-message SingleStationResponse { StationResponse station = 1; }
+message SingleStation { Station station = 1; }
 
-message MultipleStationResponse { repeated SingleStationResponse stations = 1; }
+message MultipleStation { repeated SingleStation stations = 1; }
 
 enum LineType {
   OtherLineType = 0;
@@ -104,7 +103,7 @@ enum CompanyType {
   SemiMajor = 4;
 }
 
-message CompanyResponse {
+message Company {
   uint32 id = 1;
   uint32 railroad_id = 2;
   string name_general = 3;
@@ -118,7 +117,7 @@ message CompanyResponse {
   OperationStatus status = 11;
 }
 
-message LineResponse {
+message Line {
   uint32 id = 1;
   string name_short = 2;
   string name_katakana = 3;
@@ -131,10 +130,10 @@ message LineResponse {
   uint32 company_id = 10;
   repeated LineSymbol line_symbols = 11;
   OperationStatus status = 12;
-  StationResponse station = 13;
-  CompanyResponse company = 14;
+  Station station = 13;
+  Company company = 14;
 }
 
-message SingleLineResponse { LineResponse line = 1; }
+message SingleLine { Line line = 1; }
 
-message MultipleLineResponse { repeated LineResponse lines = 1; }
+message MultipleLine { repeated Line lines = 1; }
