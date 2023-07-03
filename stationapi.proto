@@ -67,7 +67,7 @@ message TrainType {
   string name_katakana = 5;
   string name_roman = 6;
   string name_chinese = 7;
-  string name_koren = 8;
+  string name_korean = 8;
   string color = 9;
   repeated Station stations = 10;
   repeated Line lines = 11;
