@@ -152,11 +152,10 @@ message Line {
   string name_korean = 7;
   string color = 8;
   LineType line_type = 9;
-  uint32 company_id = 10;
-  repeated LineSymbol line_symbols = 11;
-  OperationStatus status = 12;
-  Station station = 13;
-  Company company = 14;
+  repeated LineSymbol line_symbols = 10;
+  OperationStatus status = 11;
+  Station station = 12;
+  Company company = 13;
 }
 
 message SingleLine { Line line = 1; }
