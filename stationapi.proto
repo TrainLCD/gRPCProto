@@ -79,6 +79,7 @@ message TrainType {
   string color = 9;
   // 駅リストを入れるとJSONが肥大化するので路線情報のみにしている
   repeated Line lines = 10;
+  Line line = 11;
   TrainDirection direction = 12;
 }
 
