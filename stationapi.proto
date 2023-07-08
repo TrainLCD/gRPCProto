@@ -105,7 +105,7 @@ message Station {
   repeated StationNumber station_numbers = 19;
   StopCondition stop_condition = 20;
   optional double distance = 21;
-  repeated TrainType train_types = 22;
+  bool has_train_types = 22;
   bool pass = 23;
 }
 
