@@ -79,7 +79,6 @@ message TrainType {
   string color = 9;
   repeated Station stations = 10;
   repeated Line lines = 11;
-  repeated TrainType another_train_types = 12;
   TrainDirection direction = 13;
 }
 
