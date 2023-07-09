@@ -78,7 +78,7 @@ message TrainType {
   string name_korean = 8;
   string color = 9;
   repeated Line lines = 10;
-  Line line = 11;
+  optional Line line = 11;
   TrainDirection direction = 12;
 }
 
@@ -92,7 +92,7 @@ message Station {
   string name_korean = 7;
   optional string three_letter_code = 8;
   repeated Line lines = 9;
-  Line line = 10;
+  optional Line line = 10;
   uint32 prefecture_id = 11;
   string postal_code = 12;
   string address = 13;
@@ -104,9 +104,10 @@ message Station {
   repeated StationNumber station_numbers = 19;
   StopCondition stop_condition = 20;
   optional double distance = 21;
+  optional bool has_train_types = 22;
   // 同一種別のリクエストの場合出力する
-  optional TrainType train_type = 22;
-  bool pass = 23;
+  optional TrainType train_type = 23;
+  bool pass = 24;
 }
 
 message SingleStationResponse { Station station = 1; }
@@ -164,8 +165,8 @@ message Line {
   LineType line_type = 9;
   repeated LineSymbol line_symbols = 10;
   OperationStatus status = 11;
-  Station station = 12;
-  Company company = 13;
+  optional Station station = 12;
+  optional Company company = 13;
 }
 
 message SingleLine { Line line = 1; }
