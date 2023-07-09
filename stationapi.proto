@@ -105,9 +105,7 @@ message Station {
   StopCondition stop_condition = 20;
   optional double distance = 21;
   optional bool has_train_types = 22;
-  // 同一種別のリクエストの場合出力する
-  optional TrainType train_type = 23;
-  bool pass = 24;
+  bool pass = 23;
 }
 
 message SingleStationResponse { Station station = 1; }
@@ -167,6 +165,8 @@ message Line {
   OperationStatus status = 11;
   optional Station station = 12;
   optional Company company = 13;
+  // 同一種別のリクエストの場合出力する
+  optional TrainType train_type = 14;
 }
 
 message SingleLine { Line line = 1; }
