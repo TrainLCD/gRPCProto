@@ -77,7 +77,6 @@ message TrainType {
   string name_chinese = 7;
   string name_korean = 8;
   string color = 9;
-  // 駅リストを入れるとJSONが肥大化するので路線情報のみにしている
   repeated Line lines = 10;
   Line line = 11;
   TrainDirection direction = 12;
@@ -105,7 +104,8 @@ message Station {
   repeated StationNumber station_numbers = 19;
   StopCondition stop_condition = 20;
   optional double distance = 21;
-  bool has_train_types = 22;
+  // 同一種別のリクエストの場合出力する
+  optional TrainType train_type = 22;
   bool pass = 23;
 }
 
