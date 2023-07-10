@@ -140,15 +140,14 @@ enum CompanyType {
 message Company {
   uint32 id = 1;
   uint32 railroad_id = 2;
-  string name_general = 3;
+  string name = 3;
   string name_katakana = 4;
   string name_full = 5;
-  string name_short = 6;
-  string name_english_short = 7;
-  string name_english_full = 8;
-  string url = 9;
-  CompanyType type = 10;
-  OperationStatus status = 11;
+  string name_english_short = 6;
+  string name_english_full = 7;
+  string url = 8;
+  CompanyType type = 9;
+  OperationStatus status = 10;
 }
 
 message Line {
