@@ -144,7 +144,7 @@ message Company {
   string name_full = 5;
   string name_english_short = 6;
   string name_english_full = 7;
-  string url = 8;
+  optional string url = 8;
   CompanyType type = 9;
   OperationStatus status = 10;
 }
