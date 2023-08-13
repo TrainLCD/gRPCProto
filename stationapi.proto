@@ -33,6 +33,7 @@ message GetStationByLineIdRequest { uint32 line_id = 1; }
 message GetStationsByNameRequest {
   string station_name = 1;
   optional uint32 limit = 2;
+  optional uint32 train_type_id = 3;
 }
 
 message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
