@@ -35,8 +35,6 @@ message GetStationsByNameRequest {
   optional uint32 limit = 2;
   optional uint32 line_id = 3;
   optional uint32 train_type_group_id = 4;
-  // train_type_group_idに対応している駅以外も対応するかのフラグ
-  optional bool include_unreachable_stations = 5;
 }
 
 message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
