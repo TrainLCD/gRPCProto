@@ -149,6 +149,7 @@ message Company {
   optional string url = 8;
   CompanyType type = 9;
   OperationStatus status = 10;
+  string name = 11;
 }
 
 message Line {
