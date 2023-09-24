@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package app.trainlcd.grpc;
 
+import "google/protobuf/empty.proto";
+
 service StationAPI {
   rpc GetStationById(GetStationByIdRequest) returns (SingleStationResponse) {}
   rpc GetStationsByGroupId(GetStationByGroupIdRequest)
@@ -16,8 +18,8 @@ service StationAPI {
       returns (MultipleStationResponse) {}
   rpc GetTrainTypesByStationId(GetTrainTypesByStationIdRequest)
       returns (MultipleTrainTypeResponse) {}
-  rpc GetRegisteredStationCount(GetRegisteredStationCountRequest)
-      returns (CountResponse) {}
+  rpc GetRegisteredStationCount(google.protobuf.Empty) returns (CountResponse) {
+  }
 }
 
 message GetStationByIdRequest { uint32 id = 1; }
@@ -42,8 +44,6 @@ message GetStationsByNameRequest {
 message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
 
 message GetTrainTypesByStationIdRequest { uint32 station_id = 1; }
-
-message GetRegisteredStationCountRequest {}
 
 enum OperationStatus {
   InOperation = 0;
