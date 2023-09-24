@@ -16,6 +16,8 @@ service StationAPI {
       returns (MultipleStationResponse) {}
   rpc GetTrainTypesByStationId(GetTrainTypesByStationIdRequest)
       returns (MultipleTrainTypeResponse) {}
+  rpc GetRegisteredStationCount(GetRegisteredStationCountRequest)
+      returns (CountResponse) {}
 }
 
 message GetStationByIdRequest { uint32 id = 1; }
@@ -40,6 +42,8 @@ message GetStationsByNameRequest {
 message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
 
 message GetTrainTypesByStationIdRequest { uint32 station_id = 1; }
+
+message GetRegisteredStationCountRequest {}
 
 enum OperationStatus {
   InOperation = 0;
@@ -173,3 +177,5 @@ message Line {
 message SingleLine { Line line = 1; }
 
 message MultipleLine { repeated Line lines = 1; }
+
+message CountResponse { uint32 count = 1; }
