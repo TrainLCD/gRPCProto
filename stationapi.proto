@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package app.trainlcd.grpc;
 
-import "google/protobuf/empty.proto";
-
 service StationAPI {
   rpc GetStationById(GetStationByIdRequest) returns (SingleStationResponse) {}
   rpc GetStationsByGroupId(GetStationByGroupIdRequest)
@@ -18,8 +16,6 @@ service StationAPI {
       returns (MultipleStationResponse) {}
   rpc GetTrainTypesByStationId(GetTrainTypesByStationIdRequest)
       returns (MultipleTrainTypeResponse) {}
-  rpc GetRegisteredStationCount(google.protobuf.Empty) returns (CountResponse) {
-  }
 }
 
 message GetStationByIdRequest { uint32 id = 1; }
@@ -79,9 +75,9 @@ message TrainType {
   uint32 group_id = 3;
   string name = 4;
   string name_katakana = 5;
-  string name_roman = 6;
-  string name_chinese = 7;
-  string name_korean = 8;
+  optional string name_roman = 6;
+  optional string name_chinese = 7;
+  optional string name_korean = 8;
   string color = 9;
   repeated Line lines = 10;
   optional Line line = 11;
@@ -93,9 +89,9 @@ message Station {
   uint32 group_id = 2;
   string name = 3;
   string name_katakana = 4;
-  string name_roman = 5;
-  string name_chinese = 6;
-  string name_korean = 7;
+  optional string name_roman = 5;
+  optional string name_chinese = 6;
+  optional string name_korean = 7;
   optional string three_letter_code = 8;
   repeated Line lines = 9;
   optional Line line = 10;
@@ -161,9 +157,9 @@ message Line {
   string name_short = 2;
   string name_katakana = 3;
   string name_full = 4;
-  string name_roman = 5;
-  string name_chinese = 6;
-  string name_korean = 7;
+  optional string name_roman = 5;
+  optional string name_chinese = 6;
+  optional string name_korean = 7;
   string color = 8;
   LineType line_type = 9;
   repeated LineSymbol line_symbols = 10;
@@ -177,5 +173,3 @@ message Line {
 message SingleLine { Line line = 1; }
 
 message MultipleLine { repeated Line lines = 1; }
-
-message CountResponse { uint32 count = 1; }
