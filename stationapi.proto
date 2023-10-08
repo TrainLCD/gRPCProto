@@ -69,9 +69,17 @@ enum TrainDirection {
   Outbound = 2;
 }
 
+enum TrainTypeKind {
+  Default = 0;
+  Branch = 1;
+  Rapid = 2;
+  Express = 3;
+  LimitedExpress = 4;
+}
+
 message TrainType {
   uint32 id = 1;
-  uint32 type_id = 2;
+  uint32 type_id = 2 [ deprecated = true ];
   uint32 group_id = 3;
   string name = 4;
   string name_katakana = 5;
@@ -82,6 +90,7 @@ message TrainType {
   repeated Line lines = 10;
   optional Line line = 11;
   TrainDirection direction = 12;
+  TrainTypeKind kind = 13;
 }
 
 message Station {
