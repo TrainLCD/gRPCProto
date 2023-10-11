@@ -28,10 +28,7 @@ message GetStationByCoordinatesRequest {
   optional uint32 limit = 3;
 }
 
-message GetStationByLineIdRequest {
-  uint32 line_id = 1;
-  optional uint32 via_station_id = 2;
-}
+message GetStationByLineIdRequest { uint32 line_id = 1; }
 
 message GetStationsByNameRequest {
   string station_name = 1;
