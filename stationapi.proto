@@ -16,7 +16,7 @@ service StationAPI {
       returns (MultipleStationResponse) {}
   rpc GetTrainTypesByStationId(GetTrainTypesByStationIdRequest)
       returns (MultipleTrainTypeResponse) {}
-  rpc GetAllStations(VoidMessage) returns (MultipleTrainTypeResponse) {}
+  rpc GetAllStations(VoidMessage) returns (MultipleStationResponse) {}
 }
 
 message VoidMessage {}
