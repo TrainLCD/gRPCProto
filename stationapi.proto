@@ -140,9 +140,16 @@ message MultipleStationResponse { repeated Station stations = 1; }
 
 message MultipleTrainTypeResponse { repeated TrainType train_types = 1; }
 
+enum DistanceResponseState {
+  None = 0;
+  Arrived = 1;
+  Approaching = 2;
+}
+
 message DistanceResponse {
   uint32 station_id = 1;
   double distance = 2;
+  DistanceResponseState state = 3;
 }
 
 enum LineType {
