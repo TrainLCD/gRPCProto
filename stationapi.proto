@@ -141,7 +141,7 @@ message MultipleStationResponse { repeated Station stations = 1; }
 message MultipleTrainTypeResponse { repeated TrainType train_types = 1; }
 
 enum DistanceResponseState {
-  None = 0;
+  Away = 0;
   Arrived = 1;
   Approaching = 2;
 }
