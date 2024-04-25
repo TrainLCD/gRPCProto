@@ -148,8 +148,9 @@ enum DistanceResponseState {
 
 message DistanceResponse {
   uint32 station_id = 1;
-  double distance = 2;
-  DistanceResponseState state = 3;
+  uint32 station_group_id = 2;
+  double distance = 3;
+  DistanceResponseState state = 4;
 }
 
 enum LineType {
