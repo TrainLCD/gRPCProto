@@ -203,8 +203,8 @@ message Line {
   OperationStatus status = 11;
   optional Station station = 12;
   optional Company company = 13;
-  // 同一種別のリクエストの場合出力する
-  optional TrainType train_type = 14;
+  optional TrainType train_type = 14; // 同一種別のリクエストの場合出力する
+  double average_distance = 15;
 }
 
 message SingleLine { Line line = 1; }
