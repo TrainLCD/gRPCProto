@@ -20,6 +20,7 @@ service StationAPI {
       returns (MultipleTrainTypeResponse) {}
   rpc GetDistanceForClosestStationFromCoordinates(CoordinatesRequest)
       returns (DistanceResponse) {}
+  rpc GetRoutes(GetRouteRequest) returns (RouteResponse) {}
 }
 
 message GetStationByIdRequest { uint32 id = 1; }
@@ -44,6 +45,11 @@ message GetStationsByNameRequest {
   optional uint32 limit = 2;
   optional uint32 line_id = 3;
   optional uint32 train_type_group_id = 4;
+}
+
+message GetRouteRequest {
+  uint32 from_station_id = 1;
+  uint32 to_station_id = 2;
 }
 
 message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
@@ -152,6 +158,8 @@ message DistanceResponse {
   DistanceResponseState state = 3;
 }
 
+message RouteResponse { repeated Route routes = 1; }
+
 enum LineType {
   OtherLineType = 0;
   BulletTrain = 1;
@@ -210,3 +218,5 @@ message Line {
 message SingleLine { Line line = 1; }
 
 message MultipleLine { repeated Line lines = 1; }
+
+message Route { repeated Station stations = 1; }
