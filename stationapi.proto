@@ -220,6 +220,6 @@ message SingleLine { Line line = 1; }
 message MultipleLine { repeated Line lines = 1; }
 
 message Route {
-  optional TrainType train_type = 1;
+  uint32 id = 1;
   repeated Station stops = 2;
 }
