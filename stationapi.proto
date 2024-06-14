@@ -23,43 +23,43 @@ service StationAPI {
   rpc GetRoutes(GetRouteRequest) returns (RouteResponse) {}
 }
 
-message GetStationByIdRequest { uint32 id = 1; }
+message GetStationByIdRequest { int32 id = 1; }
 
-message GetStationByIdListRequest { repeated uint32 ids = 1; }
+message GetStationByIdListRequest { repeated int32 ids = 1; }
 
-message GetStationByGroupIdRequest { uint32 group_id = 1; }
+message GetStationByGroupIdRequest { int32 group_id = 1; }
 
 message GetStationByCoordinatesRequest {
   double latitude = 1;
   double longitude = 2;
-  optional uint32 limit = 3;
+  optional int32 limit = 3;
 }
 
 message GetStationByLineIdRequest {
-  uint32 line_id = 1;
-  optional uint32 station_id = 2;
+  int32 line_id = 1;
+  optional int32 station_id = 2;
 }
 
 message GetStationsByNameRequest {
   string station_name = 1;
-  optional uint32 limit = 2;
-  optional uint32 line_id = 3;
-  optional uint32 train_type_group_id = 4;
+  optional int32 limit = 2;
+  optional int32 line_id = 3;
+  optional int32 train_type_group_id = 4;
 }
 
 message GetRouteRequest {
-  uint32 from_station_group_id = 1;
-  uint32 to_station_group_id = 2;
+  int32 from_station_group_id = 1;
+  int32 to_station_group_id = 2;
 }
 
-message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
+message GetStationsByLineGroupIdRequest { int32 line_group_id = 1; }
 
-message GetTrainTypesByStationIdRequest { uint32 station_id = 1; }
+message GetTrainTypesByStationIdRequest { int32 station_id = 1; }
 
 message CoordinatesRequest {
   double latitude = 1;
   double longitude = 2;
-  optional uint32 line_id = 3;
+  optional int32 line_id = 3;
 }
 
 enum OperationStatus {
@@ -99,9 +99,9 @@ enum TrainTypeKind {
 }
 
 message TrainType {
-  uint32 id = 1;
-  uint32 type_id = 2;
-  uint32 group_id = 3;
+  int32 id = 1;
+  int32 type_id = 2;
+  int32 group_id = 3;
   string name = 4;
   string name_katakana = 5;
   optional string name_roman = 6;
@@ -115,8 +115,8 @@ message TrainType {
 }
 
 message Station {
-  uint32 id = 1;
-  uint32 group_id = 2;
+  int32 id = 1;
+  int32 group_id = 2;
   string name = 3;
   string name_katakana = 4;
   optional string name_roman = 5;
@@ -125,7 +125,7 @@ message Station {
   optional string three_letter_code = 8;
   repeated Line lines = 9;
   optional Line line = 10;
-  uint32 prefecture_id = 11;
+  int32 prefecture_id = 11;
   string postal_code = 12;
   string address = 13;
   double latitude = 14;
@@ -153,7 +153,7 @@ enum DistanceResponseState {
 }
 
 message DistanceResponse {
-  uint32 station_id = 1;
+  int32 station_id = 1;
   double distance = 2;
   DistanceResponseState state = 3;
 }
@@ -184,8 +184,8 @@ enum CompanyType {
 }
 
 message Company {
-  uint32 id = 1;
-  uint32 railroad_id = 2;
+  int32 id = 1;
+  int32 railroad_id = 2;
   string name_short = 3;
   string name_katakana = 4;
   string name_full = 5;
@@ -198,7 +198,7 @@ message Company {
 }
 
 message Line {
-  uint32 id = 1;
+  int32 id = 1;
   string name_short = 2;
   string name_katakana = 3;
   string name_full = 4;
@@ -220,6 +220,6 @@ message SingleLine { Line line = 1; }
 message MultipleLine { repeated Line lines = 1; }
 
 message Route {
-  uint32 id = 1;
+  int32 id = 1;
   repeated Station stops = 2;
 }
