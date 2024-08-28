@@ -44,7 +44,7 @@ message GetStationsByNameRequest {
   string station_name = 1;
   optional uint32 limit = 2;
   optional uint32 line_id = 3;
-  optional uint32 train_type_group_id = 4;
+  optional int32 from_station_group_id = 4;
 }
 
 message GetRouteRequest {
