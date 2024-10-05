@@ -21,6 +21,8 @@ service StationAPI {
   rpc GetDistanceForClosestStationFromCoordinates(CoordinatesRequest)
       returns (DistanceResponse) {}
   rpc GetRoutes(GetRouteRequest) returns (RouteResponse) {}
+  rpc GetLineById(GetLineByIdRequest) returns (SingleLineResponse) {}
+  rpc GetLinesByName(GetLinesByNameRequest) returns (MultipleLineResponse) {}
 }
 
 message GetStationByIdRequest { uint32 id = 1; }
@@ -55,10 +57,17 @@ message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
 
 message GetTrainTypesByStationIdRequest { uint32 station_id = 1; }
 
+message GetLineByIdRequest { uint32 line_id = 1; }
+
 message CoordinatesRequest {
   double latitude = 1;
   double longitude = 2;
   optional uint32 line_id = 3;
+}
+
+message GetLinesByNameRequest {
+  string line_name = 1;
+  optional uint32 limit = 2;
 }
 
 enum OperationStatus {
@@ -144,6 +153,10 @@ message SingleStationResponse { Station station = 1; }
 message MultipleStationResponse { repeated Station stations = 1; }
 
 message MultipleTrainTypeResponse { repeated TrainType train_types = 1; }
+
+message SingleLineResponse { Line line = 1; }
+
+message MultipleLineResponse { repeated Line lines = 1; }
 
 enum DistanceResponseState {
   Away = 0;
