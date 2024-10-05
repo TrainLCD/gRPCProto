@@ -18,8 +18,6 @@ service StationAPI {
       returns (MultipleStationResponse) {}
   rpc GetTrainTypesByStationId(GetTrainTypesByStationIdRequest)
       returns (MultipleTrainTypeResponse) {}
-  rpc GetTrainTypesByStationIdList(GetTrainTypesByStationIdListRequest)
-      returns (MultipleTrainTypeResponse) {}
   rpc GetDistanceForClosestStationFromCoordinates(CoordinatesRequest)
       returns (DistanceResponse) {}
   rpc GetRoutes(GetRouteRequest) returns (RouteResponse) {}
@@ -56,8 +54,6 @@ message GetRouteRequest {
 message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
 
 message GetTrainTypesByStationIdRequest { uint32 station_id = 1; }
-
-message GetTrainTypesByStationIdListRequest { repeated uint32 station_ids = 1; }
 
 message CoordinatesRequest {
   double latitude = 1;
