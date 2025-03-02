@@ -23,6 +23,7 @@ service StationAPI {
   rpc GetRoutes(GetRouteRequest) returns (RouteResponse) {}
   rpc GetLineById(GetLineByIdRequest) returns (SingleLineResponse) {}
   rpc GetLinesByName(GetLinesByNameRequest) returns (MultipleLineResponse) {}
+  rpc GetConnectedStations(GetConnectedStationsRequest) returns (MultipleStationResponse) {}
 }
 
 message GetStationByIdRequest { uint32 id = 1; }
@@ -68,6 +69,11 @@ message CoordinatesRequest {
 message GetLinesByNameRequest {
   string line_name = 1;
   optional uint32 limit = 2;
+}
+
+message GetConnectedStationsRequest {
+  uint32 from_station_group_id = 1;
+  uint32 to_station_group_id = 2;
 }
 
 enum OperationStatus {
