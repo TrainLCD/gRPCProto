@@ -23,7 +23,7 @@ service StationAPI {
   rpc GetRoutes(GetRouteRequest) returns (RouteResponse) {}
   rpc GetLineById(GetLineByIdRequest) returns (SingleLineResponse) {}
   rpc GetLinesByName(GetLinesByNameRequest) returns (MultipleLineResponse) {}
-  rpc GetConnectedStations(GetConnectedStationsRequest) returns (MultipleStationResponse) {}
+  rpc GetConnectedRoutes(GetConnectedStationsRequest) returns (RouteResponse) {}
 }
 
 message GetStationByIdRequest { uint32 id = 1; }
