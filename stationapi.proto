@@ -52,7 +52,8 @@ message GetStationsByNameRequest {
 message GetRouteRequest {
   uint32 from_station_group_id = 1;
   uint32 to_station_group_id = 2;
-  optional uint32 limit = 3;
+  int32 page_size = 3;
+  string page_token = 4;
 }
 
 message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
@@ -177,7 +178,10 @@ message DistanceResponse {
   DistanceResponseState state = 3;
 }
 
-message RouteResponse { repeated Route routes = 1; }
+message RouteResponse {
+  repeated Route routes = 1;
+  string next_page_token = 2;
+ }
 
 enum LineType {
   OtherLineType = 0;
