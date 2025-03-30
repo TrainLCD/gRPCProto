@@ -18,8 +18,6 @@ service StationAPI {
       returns (MultipleStationResponse) {}
   rpc GetTrainTypesByStationId(GetTrainTypesByStationIdRequest)
       returns (MultipleTrainTypeResponse) {}
-  rpc GetDistanceForClosestStationFromCoordinates(CoordinatesRequest)
-      returns (DistanceResponse) {}
   rpc GetRoutes(GetRouteRequest) returns (RouteResponse) {}
   rpc GetLineById(GetLineByIdRequest) returns (SingleLineResponse) {}
   rpc GetLinesByName(GetLinesByNameRequest) returns (MultipleLineResponse) {}
