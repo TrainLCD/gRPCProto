@@ -110,6 +110,7 @@ enum TrainTypeKind {
   Rapid = 2;
   Express = 3;
   LimitedExpress = 4;
+  HighSpeedRapid = 5;
 }
 
 message TrainType {
