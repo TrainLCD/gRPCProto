@@ -153,6 +153,8 @@ message Station {
   optional double distance = 21;
   optional bool has_train_types = 22;
   optional TrainType train_type = 23;
+  optional string name_pronounce = 24;
+  optional string name_roman_pronounce = 25;
 }
 
 message SingleStationResponse { Station station = 1; }
@@ -235,6 +237,8 @@ message Line {
   optional Company company = 13;
   optional TrainType train_type = 14; // 同一種別のリクエストの場合出力する
   double average_distance = 15;
+  optional string name_pronounce = 16;
+  optional string name_roman_pronounce = 17;
 }
 
 message SingleLine { Line line = 1; }
