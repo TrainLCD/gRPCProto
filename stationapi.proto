@@ -22,6 +22,7 @@ service StationAPI {
   rpc GetLineById(GetLineByIdRequest) returns (SingleLineResponse) {}
   rpc GetLinesByName(GetLinesByNameRequest) returns (MultipleLineResponse) {}
   rpc GetConnectedRoutes(GetConnectedStationsRequest) returns (RouteResponse) {}
+  rpc GetRouteTypes(GetRouteRequest) returns (RouteTypeResponse) {}
 }
 
 message GetStationByIdRequest { uint32 id = 1; }
@@ -181,6 +182,11 @@ message DistanceResponse {
 
 message RouteResponse {
   repeated Route routes = 1;
+  string next_page_token = 2;
+ }
+
+ message RouteTypeResponse {
+  repeated TrainType train_types = 1;
   string next_page_token = 2;
  }
 
