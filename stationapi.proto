@@ -268,7 +268,7 @@ message StationMinimal {
   StopCondition stop_condition = 8;
 }
 
-message LineMinimal {line_ids
+message LineMinimal {
   uint32 id = 1;
   string name_short = 2;
   string color = 3;
