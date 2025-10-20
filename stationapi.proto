@@ -21,6 +21,7 @@ service StationAPI {
   rpc GetRoutes(GetRouteRequest) returns (RouteResponse) {}
   rpc GetRoutesMinimal(GetRouteRequest) returns (RouteMinimalResponse) {}
   rpc GetLineById(GetLineByIdRequest) returns (SingleLineResponse) {}
+  rpc GetLineByIdList(GetLineByIdListRequest) returns (MultipleLineResponse) {}
   rpc GetLinesByName(GetLinesByNameRequest) returns (MultipleLineResponse) {}
   rpc GetConnectedRoutes(GetConnectedStationsRequest) returns (RouteResponse) {}
   rpc GetRouteTypes(GetRouteRequest) returns (RouteTypeResponse) {}
@@ -61,6 +62,8 @@ message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
 message GetTrainTypesByStationIdRequest { uint32 station_id = 1; }
 
 message GetLineByIdRequest { uint32 line_id = 1; }
+
+message GetLineByIdListRequest { repeated uint32 line_ids = 1; }
 
 message CoordinatesRequest {
   double latitude = 1;
@@ -265,7 +268,7 @@ message StationMinimal {
   StopCondition stop_condition = 8;
 }
 
-message LineMinimal {
+message LineMinimal {line_ids
   uint32 id = 1;
   string name_short = 2;
   string color = 3;
