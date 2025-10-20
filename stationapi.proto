@@ -19,6 +19,7 @@ service StationAPI {
   rpc GetTrainTypesByStationId(GetTrainTypesByStationIdRequest)
       returns (MultipleTrainTypeResponse) {}
   rpc GetRoutes(GetRouteRequest) returns (RouteResponse) {}
+  rpc GetRoutesMinimal(GetRouteRequest) returns (RouteMinimalResponse) {}
   rpc GetLineById(GetLineByIdRequest) returns (SingleLineResponse) {}
   rpc GetLinesByName(GetLinesByNameRequest) returns (MultipleLineResponse) {}
   rpc GetConnectedRoutes(GetConnectedStationsRequest) returns (RouteResponse) {}
@@ -250,4 +251,34 @@ message MultipleLine { repeated Line lines = 1; }
 message Route {
   uint32 id = 1;
   repeated Station stops = 2;
+}
+
+// Minimal message definitions for optimized GetRoutesMinimal RPC
+message StationMinimal {
+  uint32 id = 1;
+  uint32 group_id = 2;
+  string name = 3;
+  string name_katakana = 4;
+  optional string name_roman = 5;
+  repeated uint32 line_ids = 6;  // IDs only, not full Line objects
+  repeated StationNumber station_numbers = 7;
+  StopCondition stop_condition = 8;
+}
+
+message LineMinimal {
+  uint32 id = 1;
+  string name_short = 2;
+  string color = 3;
+  LineType line_type = 4;
+}
+
+message RouteMinimal {
+  uint32 id = 1;
+  repeated StationMinimal stops = 2;
+}
+
+message RouteMinimalResponse {
+  repeated RouteMinimal routes = 1;
+  repeated LineMinimal lines = 2;  // Normalized line data (deduplicated)
+  string next_page_token = 3;
 }
