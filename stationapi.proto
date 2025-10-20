@@ -270,6 +270,7 @@ message LineMinimal {
   string name_short = 2;
   string color = 3;
   LineType line_type = 4;
+  repeated LineSymbol line_symbols = 5;
 }
 
 message RouteMinimal {
