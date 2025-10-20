@@ -263,6 +263,7 @@ message StationMinimal {
   repeated uint32 line_ids = 6;  // IDs only, not full Line objects
   repeated StationNumber station_numbers = 7;
   StopCondition stop_condition = 8;
+  optional TrainType train_type = 9;
 }
 
 message LineMinimal {
@@ -270,7 +271,6 @@ message LineMinimal {
   string name_short = 2;
   string color = 3;
   LineType line_type = 4;
-  repeated LineSymbol line_symbols = 5;
 }
 
 message RouteMinimal {
