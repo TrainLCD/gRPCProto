@@ -55,6 +55,7 @@ message GetRouteRequest {
   uint32 to_station_group_id = 2;
   uint32 page_size = 3;
   string page_token = 4;
+  optional uint32 via_line_id = 5;
 }
 
 message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
