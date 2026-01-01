@@ -43,6 +43,7 @@ message GetStationByCoordinatesRequest {
 message GetStationByLineIdRequest {
   uint32 line_id = 1;
   optional uint32 station_id = 2;
+  optional uint32 direction_id = 3; // Direction: 0 = default order, 1 or 2 = reverse order
 }
 
 message GetStationsByNameRequest {
