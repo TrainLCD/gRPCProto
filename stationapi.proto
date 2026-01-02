@@ -27,11 +27,20 @@ service StationAPI {
   rpc GetRouteTypes(GetRouteRequest) returns (RouteTypeResponse) {}
 }
 
-message GetStationByIdRequest { uint32 id = 1; }
+message GetStationByIdRequest {
+  uint32 id = 1;
+  optional TransportType transport_type = 2; // Unspecified = include nearby bus stops
+}
 
-message GetStationByIdListRequest { repeated uint32 ids = 1; }
+message GetStationByIdListRequest {
+  repeated uint32 ids = 1;
+  optional TransportType transport_type = 2; // Unspecified = include nearby bus stops
+}
 
-message GetStationByGroupIdRequest { uint32 group_id = 1; }
+message GetStationByGroupIdRequest {
+  uint32 group_id = 1;
+  optional TransportType transport_type = 2; // Filter by transport type. Unspecified = include nearby bus stops
+}
 
 message GetStationByCoordinatesRequest {
   double latitude = 1;
@@ -44,6 +53,7 @@ message GetStationByLineIdRequest {
   uint32 line_id = 1;
   optional uint32 station_id = 2;
   optional uint32 direction_id = 3; // Direction: 0 = default order, 1 or 2 = reverse order
+  optional TransportType transport_type = 4; // Unspecified = include nearby bus stops
 }
 
 message GetStationsByNameRequest {
@@ -61,7 +71,10 @@ message GetRouteRequest {
   optional uint32 via_line_id = 5;
 }
 
-message GetStationsByLineGroupIdRequest { uint32 line_group_id = 1; }
+message GetStationsByLineGroupIdRequest {
+  uint32 line_group_id = 1;
+  optional TransportType transport_type = 2; // Unspecified = include nearby bus stops
+}
 
 message GetTrainTypesByStationIdRequest { uint32 station_id = 1; }
 
