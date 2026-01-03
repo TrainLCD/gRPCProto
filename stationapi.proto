@@ -29,38 +29,38 @@ service StationAPI {
 
 message GetStationByIdRequest {
   uint32 id = 1;
-  optional TransportType transport_type = 2; // Unspecified = include nearby bus stops
+  optional TransportType transport_type = 2; // Unspecified = rail only (default)
 }
 
 message GetStationByIdListRequest {
   repeated uint32 ids = 1;
-  optional TransportType transport_type = 2; // Unspecified = include nearby bus stops
+  optional TransportType transport_type = 2; // Unspecified = rail only (default)
 }
 
 message GetStationByGroupIdRequest {
   uint32 group_id = 1;
-  optional TransportType transport_type = 2; // Filter by transport type. Unspecified = include nearby bus stops
+  optional TransportType transport_type = 2; // Filter by transport type. Unspecified = rail only (default)
 }
 
 message GetStationByCoordinatesRequest {
   double latitude = 1;
   double longitude = 2;
   optional uint32 limit = 3;
-  optional TransportType transport_type = 4;  // Filter by transport type
+  optional TransportType transport_type = 4;  // Filter by transport type. Unspecified = rail only (default)
 }
 
 message GetStationByLineIdRequest {
   uint32 line_id = 1;
   optional uint32 station_id = 2;
   optional uint32 direction_id = 3; // Direction: 0 = default order, 1 or 2 = reverse order
-  optional TransportType transport_type = 4; // Unspecified = include nearby bus stops
+  optional TransportType transport_type = 4; // Unspecified = rail only (default)
 }
 
 message GetStationsByNameRequest {
   string station_name = 1;
   optional uint32 limit = 2;
   optional uint32 from_station_group_id = 3;
-  optional TransportType transport_type = 4;  // Filter by transport type
+  optional TransportType transport_type = 4;  // Filter by transport type. Unspecified = rail only (default)
 }
 
 message GetRouteRequest {
@@ -73,7 +73,7 @@ message GetRouteRequest {
 
 message GetStationsByLineGroupIdRequest {
   uint32 line_group_id = 1;
-  optional TransportType transport_type = 2; // Unspecified = include nearby bus stops
+  optional TransportType transport_type = 2; // Unspecified = rail only (default)
 }
 
 message GetTrainTypesByStationIdRequest { uint32 station_id = 1; }
@@ -106,9 +106,10 @@ enum OperationStatus {
 
 // Transport type for filtering rail/bus
 enum TransportType {
-  TransportTypeUnspecified = 0; // Default: include all
+  TransportTypeUnspecified = 0; // Default: rail only
   Rail = 1; // Rail only (stations)
   Bus = 2; // Bus only (bus stops)
+  RailAndBus = 3; // Rail + nearby bus stops
 }
 
 message StationNumber {
