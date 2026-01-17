@@ -74,6 +74,7 @@ message GetRouteRequest {
 message GetStationsByLineGroupIdRequest {
   uint32 line_group_id = 1;
   optional TransportType transport_type = 2; // Unspecified = rail only (default)
+  optional uint32 direction_id = 3; // Direction: 0 = default order, 1 or 2 = reverse order
 }
 
 message GetTrainTypesByStationIdRequest { uint32 station_id = 1; }
