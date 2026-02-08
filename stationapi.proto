@@ -12,6 +12,8 @@ service StationAPI {
       returns (MultipleStationResponse) {}
   rpc GetStationsByLineId(GetStationByLineIdRequest)
       returns (MultipleStationResponse) {}
+  rpc GetStationsByLineIdList(GetStationByLineIdListRequest)
+      returns (MultipleStationResponse) {}
   rpc GetStationsByName(GetStationsByNameRequest)
       returns (MultipleStationResponse) {}
   rpc GetStationsByLineGroupId(GetStationsByLineGroupIdRequest)
@@ -54,6 +56,11 @@ message GetStationByLineIdRequest {
   optional uint32 station_id = 2;
   optional uint32 direction_id = 3; // Direction: 0 = default order, 1 or 2 = reverse order
   optional TransportType transport_type = 4; // Unspecified = rail only (default)
+}
+
+message GetStationByLineIdListRequest {
+  repeated uint32 line_ids = 1;
+  optional TransportType transport_type = 2;
 }
 
 message GetStationsByNameRequest {
