@@ -199,6 +199,7 @@ message Station {
   optional bool has_train_types = 22;
   optional TrainType train_type = 23;
   TransportType transport_type = 24; // Rail or Bus
+  optional string name_ipa = 25; // TTS用カタカナ名のIPA転写
 }
 
 message SingleStationResponse { Station station = 1; }
@@ -287,6 +288,7 @@ message Line {
   optional TrainType train_type = 14; // 同一種別のリクエストの場合出力する
   double average_distance = 15;
   TransportType transport_type = 16; // Rail or Bus
+  optional string name_ipa = 17; // TTS用カタカナ名のIPA転写
 }
 
 message SingleLine { Line line = 1; }
@@ -310,6 +312,7 @@ message StationMinimal {
   StopCondition stop_condition = 8;
   optional bool has_train_types = 9;
   optional uint32 train_type_id = 10;  // ID only to avoid circular reference
+  optional string name_ipa = 11; // TTS用カタカナ名のIPA転写
 }
 
 message LineMinimal {
