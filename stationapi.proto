@@ -134,6 +134,26 @@ message StationNumber {
   string station_number = 4;
 }
 
+enum TtsAlphabet {
+  TTS_ALPHABET_UNSPECIFIED = 0;
+  TTS_ALPHABET_IPA = 1;
+  TTS_ALPHABET_YOMIGANA = 2;
+  TTS_ALPHABET_PLAIN = 3;
+}
+
+// TTS用の1セグメント。`lang` は "en-US" や "ja-JP" のような BCP-47 言語タグで、
+// `surface` / `fallback_text` / `pronunciation` をクライアントがどの言語として
+// 解釈するかを示す。`separator` はこのセグメントの後ろにだけ付与する接尾区切りで、
+// 次のセグメントとの間に挿入し、セグメント列の末尾では無視する。
+message TtsSegment {
+  string surface = 1;
+  string fallback_text = 2;
+  string pronunciation = 3;
+  TtsAlphabet alphabet = 4;
+  string lang = 5;
+  string separator = 6;
+}
+
 enum StopCondition {
   All = 0;
   Not = 1;
@@ -174,6 +194,7 @@ message TrainType {
   TrainTypeKind kind = 13;
   optional string name_ipa = 14; // TTS用カタカナ名のIPA転写
   optional string name_roman_ipa = 15; // TTS用英語名のIPA転写
+  repeated TtsSegment name_tts_segments = 16; // TTS用読みセグメント
 }
 
 message Station {
@@ -203,6 +224,7 @@ message Station {
   TransportType transport_type = 24; // Rail or Bus
   optional string name_ipa = 25; // TTS用カタカナ名のIPA転写
   optional string name_roman_ipa = 26; // TTS用英語名のIPA転写
+  repeated TtsSegment name_tts_segments = 27; // TTS用読みセグメント
 }
 
 message SingleStationResponse { Station station = 1; }
@@ -293,6 +315,7 @@ message Line {
   TransportType transport_type = 16; // Rail or Bus
   optional string name_ipa = 17; // TTS用カタカナ名のIPA転写
   optional string name_roman_ipa = 18; // TTS用英語名のIPA転写
+  repeated TtsSegment name_tts_segments = 19; // TTS用読みセグメント
 }
 
 message SingleLine { Line line = 1; }
@@ -318,6 +341,7 @@ message StationMinimal {
   optional uint32 train_type_id = 10;  // ID only to avoid circular reference
   optional string name_ipa = 11; // TTS用カタカナ名のIPA転写
   optional string name_roman_ipa = 12; // TTS用英語名のIPA転写
+  repeated TtsSegment name_tts_segments = 13; // TTS用読みセグメント
 }
 
 message LineMinimal {
