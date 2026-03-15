@@ -136,9 +136,9 @@ message StationNumber {
 
 enum TtsAlphabet {
   TTS_ALPHABET_UNSPECIFIED = 0;
-  IPA = 1;
-  YOMIGANA = 2;
-  PLAIN = 3;
+  TTS_ALPHABET_IPA = 1;
+  TTS_ALPHABET_YOMIGANA = 2;
+  TTS_ALPHABET_PLAIN = 3;
 }
 
 // TTS用の1セグメント。`lang` は "en-US" や "ja-JP" のような BCP-47 言語タグで、
