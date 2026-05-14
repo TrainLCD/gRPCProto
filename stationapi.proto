@@ -177,6 +177,7 @@ enum TrainTypeKind {
   LimitedExpress = 4;
   HighSpeedRapid = 5;
   CommuterRapid = 6;
+  BusRoute = 7;
 }
 
 message TrainType {
