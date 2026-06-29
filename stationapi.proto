@@ -29,6 +29,8 @@ service StationAPI {
   rpc GetLinesByName(GetLinesByNameRequest) returns (MultipleLineResponse) {}
   rpc GetConnectedRoutes(GetConnectedStationsRequest) returns (RouteResponse) {}
   rpc GetRouteTypes(GetRouteRequest) returns (RouteTypeResponse) {}
+  rpc EstimateArrivalTimes(GetRouteRequest)
+      returns (EstimatedArrivalResponse) {}
 }
 
 message GetStationByIdRequest {
@@ -363,4 +365,21 @@ message RouteMinimalResponse {
   repeated RouteMinimal routes = 1;
   repeated LineMinimal lines = 2; // Normalized line data (deduplicated)
   string next_page_token = 3;
+}
+
+message EstimatedArrivalStop {
+  uint32 station_id = 1;
+  uint32 station_group_id = 2;
+  double cumulative_minutes = 3;
+  bool stops_here = 4;
+}
+
+message EstimatedArrivalRoute {
+  uint32 id = 1;
+  repeated EstimatedArrivalStop stops = 2;
+}
+
+message EstimatedArrivalResponse {
+  repeated EstimatedArrivalRoute routes = 1;
+  string next_page_token = 2;
 }
