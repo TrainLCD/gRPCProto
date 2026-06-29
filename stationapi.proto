@@ -392,11 +392,17 @@ message GetTrainRouteRequest {
 }
 
 message TrainRouteSegment {
+  // 既存 Station。緯度経度・stop_condition・train_type・line(line_type) を含む。
   Station station = 1;
+  // この駅に停車するか。通過駅(stop_condition == Not)は false。
   bool stops = 2;
+  // 直前駅からの距離 (メートル, Haversine)。先頭セグメントは 0。
   double distance_from_previous = 3;
+  // この駅へ向かう区間の最高巡航速度 (m/s)。正値。
   double max_speed = 4;
+  // 最大加速度 (m/s^2)。正値。
   double max_acceleration = 5;
+  // 最大減速度 (m/s^2)。正値（絶対値として格納）。
   double max_deceleration = 6;
 }
 
