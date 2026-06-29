@@ -31,6 +31,7 @@ service StationAPI {
   rpc GetRouteTypes(GetRouteRequest) returns (RouteTypeResponse) {}
   rpc EstimateArrivalTimes(GetRouteRequest)
       returns (EstimatedArrivalResponse) {}
+  rpc GetTrainRoute(GetTrainRouteRequest) returns (TrainRouteResponse) {}
 }
 
 message GetStationByIdRequest {
@@ -382,4 +383,23 @@ message EstimatedArrivalRoute {
 message EstimatedArrivalResponse {
   repeated EstimatedArrivalRoute routes = 1;
   string next_page_token = 2;
+}
+
+message GetTrainRouteRequest {
+  uint32 from_station_group_id = 1;
+  uint32 to_station_group_id = 2;
+  optional uint32 line_group_id = 3;
+}
+
+message TrainRouteSegment {
+  Station station = 1;
+  bool stops = 2;
+  double distance_from_previous = 3;
+  double max_speed = 4;
+  double max_acceleration = 5;
+  double max_deceleration = 6;
+}
+
+message TrainRouteResponse {
+  repeated TrainRouteSegment segments = 1;
 }
