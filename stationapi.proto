@@ -87,6 +87,7 @@ message EstimateArrivalTimesRequest {
   uint32 from_station_id = 1;
   uint32 to_station_id = 2;
   repeated uint32 via_line_ids = 3;
+  optional uint32 direction_id = 4; // Direction: 0 = default order, 1 = reverse order
 }
 
 message GetStationsByLineGroupIdRequest {
