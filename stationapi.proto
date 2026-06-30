@@ -29,7 +29,7 @@ service StationAPI {
   rpc GetLinesByName(GetLinesByNameRequest) returns (MultipleLineResponse) {}
   rpc GetConnectedRoutes(GetConnectedStationsRequest) returns (RouteResponse) {}
   rpc GetRouteTypes(GetRouteRequest) returns (RouteTypeResponse) {}
-  rpc EstimateArrivalTimes(GetRouteRequest)
+  rpc EstimateArrivalTimes(EstimateArrivalTimesRequest)
       returns (EstimatedArrivalResponse) {}
   rpc GetTrainRoute(GetTrainRouteRequest) returns (TrainRouteResponse) {}
 }
@@ -81,6 +81,12 @@ message GetRouteRequest {
   uint32 page_size = 3;
   string page_token = 4;
   optional uint32 via_line_id = 5;
+}
+
+message EstimateArrivalTimesRequest {
+  uint32 from_station_id = 1;
+  uint32 to_station_id = 2;
+  repeated uint32 via_line_ids = 3;
 }
 
 message GetStationsByLineGroupIdRequest {
