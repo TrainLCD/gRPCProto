@@ -380,6 +380,10 @@ message EstimatedArrivalStop {
   uint32 station_group_id = 2;
   double cumulative_minutes = 3;
   bool stops_here = 4;
+  // 始点からの累積出発時刻(分)。中間停車駅では「到着 + 停車時間」、通過駅では
+  // 通過時刻(= cumulative_minutes)、終点では到着時刻と同じ。クライアントは
+  // 「到着(k) − 出発(基準駅)」で基準駅発の残り時間(発車基準 ETA)を計算できる。
+  double departure_cumulative_minutes = 5;
 }
 
 message EstimatedArrivalRoute {
